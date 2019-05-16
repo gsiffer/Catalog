@@ -34,6 +34,39 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
+@app.route('/')
+@app.route('/catalog')
+def showCatalog():
+    return "Show catalog"
+
+@app.route('/catalog/category/new')
+def newCategory():
+    return "New Category"
+
+@app.route('/catalog/category/<int:category_id>/edit')
+def editCategory(category_id):
+    return "Edit Category %s" % category_id
+
+@app.route('/catalog/category/<int:category_id>/delete')
+def deleteCategory(category_id):
+    return "Delete Category %s" % category_id
+
+@app.route('/catalog/category/<int:category_id>/item')
+def showItem(category_id):
+    return "Show Items %s" % category_id
+
+@app.route('/catalog/category/<int:category_id>/item/new')
+def newItem(category_id):
+    return "New Item %s" % category_id
+
+@app.route('/catalog/category/<int:category_id>/item/<int:item_id>/edit')
+def editItem(category_id, item_id):
+    return "Edit Item %s %s" % (category_id, item_id)
+
+@app.route('/catalog/category/<int:category_id>/item/<int:item_id>/delete')
+def deleteItem(category_id, item_id):
+    return "Delete Item %s %s" % (category_id, item_id)
+
 
 if __name__ == '__main__':
   app.secret_key = 'super_secret_key'
