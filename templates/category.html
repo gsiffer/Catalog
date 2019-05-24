@@ -1,43 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class = "flash">
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
 
-  <link rel= stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
-<style>
-.header1 {
-  padding: 2px;
-  text-align: center;
-  background: #4358C3;
-  color: white;
-  font-size: 30px;
-}
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
 
-.header2 {
-  margin-top: 10px;
-
-}
-body  {
-  background-image: url("/static/sport.jpg");
-
-}
-
-font {
-  font-size: 18px;
-}
-
-
-</style>
-</head>
-  <body>
-    <div class="header1">
-      <h3>Catalog App</h3>
-    </div>
+</div>
   <div class="row center header2">
     <div class="column left" style="background-color:#FAF5F3;">
       <a href="{{url_for('newCategory')}}"><p>Add New Category</p></a>
       <h2>Categories</h2>
       {% for category in categories %}
-        <a href = "{{url_for('showItem', category_id = category.id)}}">
+        <a class="no-line" href = "{{url_for('showItem', category_id = category.id)}}">
         <font>{{category.name}}</font>
         </a>
         <a href = "{{url_for('editCategory', category_id = category.id)}}">
@@ -47,16 +29,15 @@ font {
           <br>
       {% endfor %}
     </div>
-    <div class="column right" style="background-color:#FCFAFA  ;">
+    <div class="column right" style="background-color:#FCFAFA;">
       <br><br>
-      <h2>Latest Items</h2>
+      <h2 class="line">Latest Items</h2>
       {% for latest_item in latest_items %}
-      <a href = "{{url_for('showItem', category_id = latest_item.category_id)}}">
-      <font>{{latest_item.name}}</font>&nbsp;({{latest_item.name}})
-
+      <a class="no-line"href = "{{url_for('showItem', category_id = latest_item.category_id)}}">
+      <font>{{latest_item.name}}</font></a>
+      <font class="color">&nbsp;(<em>{{latest_item.category.name}})</em></font>
       <br>
       {% endfor %}
     </div>
   </div>
-</body>
-</html>
+{% endblock %}

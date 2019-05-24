@@ -5,5 +5,100 @@
 }
 
 .left {
-  width: 500px;
+  width: 250px;
+  margin-right: 10px;
+  border-radius: 10px 10px;
+}
+
+.right {
+  width: 600px;
+  border-radius: 10px 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.center {
+  margin: auto;
+  width: 80%;
+}
+
+.window {
+  padding: 2px;
+  width: 30%;
+  background: #4358C3;
+  color: white;
+  height: 300px;
+  margin-top: 100px;
+  margin-left: 100px;
+  border-radius: 10px 10px;
+}
+
+
+.header1 {
+  padding: 2px;
+  text-align: center;
+  background: #4358C3;
+  color: white;
+  font-size: 30px;
+}
+
+.header2 {
+  margin-top: 30px;
+
+}
+body  {
+  background-image: url("/static/sport.jpg");
+
+}
+
+font {
+  font-size: 18px;
+}
+
+.btn {
+	padding: 10px;
+	margin: 0;
+	border-color: #5192E7;
+	border-width: 2px;
+	color: #FFFFFF;
+  background-color: #3F8BEE;
+}
+
+.flash {
+	background-color: #98FB98;
+	width:100%;
+	text-decoration: none;
+}
+
+.btn:hover {
+	/* border-color: #aaaaaa; */
+  /* color: #aaaaaa; */
+  background-color: #2E77D7;
+}
+
+.no-line {
+  text-decoration: none;
+  color: #DB5237;
+}
+
+.color {
+  color: #A3A09F;
+}
+
+.line {
+  line-height: 26px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.margin-left {
+  margin-top: 100px;
+  margin-left: 30px;
 }

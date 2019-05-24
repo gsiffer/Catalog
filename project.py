@@ -38,12 +38,22 @@ session = DBSession()
 @app.route('/catalog')
 def showCatalog():
     categories = session.query(Category).order_by(asc(Category.name))
-    latest_items = session.query(Item).order_by(Item.id.desc()).limit(10)
+    latest_items = session.query(Item).order_by(Item.id.desc()).limit(9)
     return render_template('category.html', categories = categories, latest_items = latest_items)
 
-@app.route('/catalog/category/new')
+@app.route('/catalog/category/new', methods=['GET','POST'])
 def newCategory():
-    return "New Category"
+    if request.method == 'POST':
+        if request.form['name']:
+            newCategory = Category(name = request.form['name'], user_id = "#####")
+            session.add(newCategory)
+            flash('New Category %s Successfully Created' % newCategory.name)
+            session.commit()
+            return redirect(url_for('showCatalog'))
+        else:
+            return redirect(url_for('showCatalog'))
+    else:
+        return render_template('newCategory.html')
 
 @app.route('/catalog/category/<int:category_id>/edit')
 def editCategory(category_id):
