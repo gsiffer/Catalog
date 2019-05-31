@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class="window-del">
+<h1 class="line text-center">Edit Category</h1>
+    <form action="{{url_for('editCategory', category_id = editedCategory.id)}}" method = 'POST'>
+      <div class="header2 margin-btn">
+        <p>Name:</p>
+        <input type = 'text' size = '30' maxlength="100" name = 'name' value="{{editedCategory.name}}">
+        <div class="header2">
+          <input class="btn btn-size" type="submit"  value="Edit">
+          <input class="btn" type="button" value="Cancel" onClick="window.location='http://localhost:8000/catalog/category/{{editedCategory.id}}/item';">
+        </div>
+      </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

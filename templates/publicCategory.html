@@ -1,6 +1,6 @@
 {% extends "main.html" %}
 {% block content %}
-{% include "header.html" %}
+<!-- {% include "header.html" %}
 <div class = "flash">
 		{% with messages = get_flashed_messages() %}
       	{% if messages %}
@@ -10,12 +10,18 @@
         {% endfor %}
         </ul>
         {% endif %}
-    {% endwith %}
-
+    {% endwith %} -->
+<div class="margin-login">
+  <a href ="{{url_for('showLogin')}}">Click Here to Log in</a>
 </div>
+
+<div class="header1">
+  <h2>Catalog App</h2>
+</div>
+
   <div class="row center header2">
     <div class="column left">
-      <a href="{{url_for('newCategory')}}"><p>Add New Category</p></a>
+      <!-- <a href="{{url_for('newCategory')}}"><p>Add New Category</p></a> -->
 			<h2 class="line">Categories</h2>
       {% for category in categories %}
         <a class="no-line" href = "{{url_for('showItem', category_id = category.id)}}">
@@ -24,7 +30,7 @@
       </div>
     <div class="column right">
       <!-- <br><br> -->
-      <h2 class="line margin-top">Latest Items</h2>
+      <h2 class="line">Latest Items</h2>
       {% for latest_item in latest_items %}
       <a class="no-line" href = "{{url_for('showItem', category_id = latest_item.category_id)}}">
       <font>{{latest_item.name}}</font></a>

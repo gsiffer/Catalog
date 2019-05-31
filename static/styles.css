@@ -1,3 +1,9 @@
+.description{
+  width: 600px;
+  background-color:#FCFAFA;
+  border-radius: 10px 10px;
+  /* height: 200px; */
+}
 
 .column {
   float: left;
@@ -7,11 +13,13 @@
 .left {
   width: 250px;
   margin-right: 10px;
+  background-color:#FAF5F3;
   border-radius: 10px 10px;
 }
 
 .right {
   width: 600px;
+  background-color:#FCFAFA;
   border-radius: 10px 10px;
 }
 
@@ -32,11 +40,66 @@
   width: 30%;
   background: #4358C3;
   color: white;
-  height: 300px;
+  /* height: 300px; */
   margin-top: 100px;
   margin-left: 100px;
   border-radius: 10px 10px;
+  min-width: 290px;
 }
+
+.window-del {
+  padding: 2px;
+  width: 30%;
+  background: #4358C3;
+  color: white;
+  margin-top: 100px;
+  margin-left: 100px;
+  border-radius: 10px 10px;
+  min-width: 290px;
+}
+
+.btn-google {
+  margin: auto;
+  width: 40%;
+  /* border: 3px solid #73AD21; */
+  padding: 4px;
+
+}
+
+.link{
+  float: right;
+}
+.btn-google:hover {
+
+  background-color: #9ab6e2;
+}
+
+
+.window-google {
+  padding: 2px;
+  width: 30%;
+  text-align: center;
+  background: #4358C3;
+  color: white;
+  margin-top: 100px;
+  margin-left: 35%;
+  /* margin-bottom: 100px; */
+  border-radius: 10px 10px;
+  min-width: 290px;
+}
+
+.window-new {
+  padding: 2px;
+  width: 40%;
+  background: #4358C3;
+  color: white;
+  margin-top: 10px;
+  margin-left: 100px;
+  border-radius: 10px 10px;
+  min-width: 290px;
+}
+
+
 
 
 .header1 {
@@ -45,12 +108,15 @@
   background: #4358C3;
   color: white;
   font-size: 30px;
+  border-radius: 10px 10px;
 }
 
 .header2 {
-  margin-top: 30px;
+  margin-top: 25px;
 
 }
+
+
 body  {
   background-image: url("/static/sport.jpg");
 
@@ -69,20 +135,29 @@ font {
   background-color: #3F8BEE;
 }
 
+.btn:hover {
+
+  background-color: #2E77D7;
+}
+
+.btn-size{
+  width: 5em;
+}
+
 .flash {
 	background-color: #98FB98;
 	width:100%;
 	text-decoration: none;
 }
 
-.btn:hover {
-	/* border-color: #aaaaaa; */
-  /* color: #aaaaaa; */
-  background-color: #2E77D7;
-}
 
 .no-line {
   text-decoration: none;
+  color: #DB5237;
+}
+
+.no-line:hover {
+  text-decoration: underline;
   color: #DB5237;
 }
 
@@ -91,7 +166,7 @@ font {
 }
 
 .line {
-  line-height: 26px;
+  line-height: 20px;
 }
 
 .text-center {
@@ -99,6 +174,49 @@ font {
 }
 
 .margin-left {
-  margin-top: 100px;
+  margin-top: 70px;
   margin-left: 30px;
 }
+
+.margin-btn {
+  margin-top: 70px;
+  margin-left: 30px;
+}
+
+.margin-cancel {
+  margin-top: 0px;
+  margin-left: 100px;
+}
+
+.home {
+  color: white;
+}
+
+.desc {
+  line-height: 2em;
+  margin-left: 10px;
+  font-size: 1.5em;
+  font-family:serif;
+}
+
+.margin-desc {
+  overflow-wrap: break-word;
+  margin-left: 10px;
+
+}
+
+textarea {
+  resize: none;
+  min-width: 20em;
+  max-width: 100em;
+  width: 95%;
+}
+
+.margin-top {
+  margin-top: 54px;
+
+}
+
+.margin-login{
+  text-align: right;
+  }

@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class = "flash">
+		{% with messages = get_flashed_messages() %}
+      	{% if messages %}
+        <ul style="list-style: none;">
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+<div class="row center header2">
+  <div class="column left">
+    <a href="{{url_for('newCategory')}}"><p>Add New Category</p></a>
+    <!-- <h2>Categories</h2> -->
+    <h2 class="line">Categories</h2>
+    {% for category in categories %}
+      <a class="no-line" href = "{{url_for('showItem', category_id = category.id)}}">
+      <font>{{category.name}}</font></a><br>
+    {% endfor %}
+    </div>
+
+    <div class="column right" style="background-color:#FCFAFA;">
+      <!-- <a href="{{url_for('newItem', category_id = categoryOne.id)}}"><p>Add New Item</p></a> -->
+      <h2 class="line margin-top">{{categoryOne.name}} Items ( {{items|length}} items )</h2>
+      {% for item in items %}
+      <a class="no-line"href = "{{url_for('description', category_id = item.category_id, item_id = item.id)}}">
+      <font>{{item.name}}</font></a>
+      <br>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+{% endblock %}

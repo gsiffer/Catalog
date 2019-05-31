@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class="window-del">
+<h1 class="line text-center">Delete Category</h1>
+<p class="line text-center">Are you sure you want to delete <em>'{{categoryToDelete.name}}'</em>
+   and all its items?</p>
+    <form action="{{url_for('deleteCategory', category_id = categoryToDelete.id)}}" method = 'POST'>
+      <div class="header2 margin-btn">
+        <input class="btn" type="submit" value="Delete">
+        <input class="btn" type="button" value="Cancel" onClick="window.location='http://localhost:8000/catalog/category/{{categoryToDelete.id}}/item';">
+      </div>
+    </form>
+</div>
+
+{% endblock %}

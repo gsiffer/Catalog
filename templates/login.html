@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
+<head>
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel= stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    <!--google -->
+    <script src="//apis.google.com/js/platform.js?onload=init" async defer></script>`
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="670908828361-3hjprr1u96aaph89q6c85ie3osk4lsl9.apps.googleusercontent.com">
+
+</head>
+
+<body>
+    <div class="container">
+      <div class="header1">
+          <h2>Catalog App</h2>
+      </div>
+      <div class="window-google">
+        <!-- start Google Start Login -->
+        <h1>Sign with your Google Account</h1>
+          <div class="g-signin2 btn-google" id="signinButton" data-onsuccess="onSignIn"
+            data-width= "150px"></div>
+        <!-- <button class="g-signin2" id="signinButton" data-width="150" data-height="20"
+        data-longtitle="true" >Sign in</button> -->
+        </div>
+
+        <script>
+            function init() {
+
+                gapi.load('auth2', function () {
+                    console.log("loaded auth2")
+                    auth2 = gapi.auth2.init({
+                        client_id: '670908828361-3hjprr1u96aaph89q6c85ie3osk4lsl9.apps.googleusercontent.com',
+                        scope: 'profile email'
+                    });
+
+                    $("#signinButton").click(function () {
+                        console.log("clicked")
+                        auth2.grantOfflineAccess({
+                            'redirect_uri': 'postmessage'
+                        }).then(offlineAccess);
+                    });
+                });
+            }
+
+            function gSignIn() {
+                console.log("clicked")
+                auth2.grantOfflineAccess({
+                    'redirect_uri': 'postmessage'
+                }).then(offlineAccess);
+            }
+
+            function gSignInFail() {
+                console.log("failed")
+            }
+
+
+            function offlineAccess(resp) {
+                console.log("in offline access")
+                var auth_code = resp.code;
+                console.log(resp);
+                $.ajax({
+                    type: "POST",
+                    url: "{{url_for('gconnect')}}?state={{STATE}}",
+                    processData: false,
+                    contentType: 'application/octet-stream; charset=utf-8',
+                    data: auth_code,
+                    success: function (result) {
+                        $("body").html(result);
+                        setTimeout(function () {
+                            window.location.href = '/catalog'
+                        }, 3000);
+
+                    }
+                });
+
+            }
+        </script>
+
+        <!--END GOOGLE PLUS SIGN IN -->
+  </div>

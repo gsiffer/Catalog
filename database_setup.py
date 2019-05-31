@@ -39,7 +39,7 @@ class Item(Base):
     name =Column(String(80), nullable = False)
     description = Column(String(250))
     category_id = Column(Integer, ForeignKey('category.id'))
-    category = relationship(Category)
+    category = relationship(Category, backref='items')
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 

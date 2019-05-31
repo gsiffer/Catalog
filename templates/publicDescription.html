@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+  <div class="row center header2">
+    <div class="description">
+      <spam class="desc"><b>{{item.name}}</b></spam><br>
+      <div class="margin-desc">{{item.description}}</div><br><br>
+      <!-- <a class="margin-desc" href="{{url_for('editItem', category_id = category.id, item_id = item.id)}}">Edit |</a> -->
+      <!-- <a href="{{url_for('deleteItem', category_id = category.id, item_id = item.id)}}">Delete |</a> -->
+      &nbsp;
+      <a href="{{url_for('showItem', category_id = category.id)}}">Back to Items</a>
+      <br>
+      <br>
+    </div>
+  </div>
+
+{% endblock %}
