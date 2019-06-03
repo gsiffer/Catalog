@@ -157,7 +157,9 @@ def gdisconnect():
         response = make_response(json.dumps('Successfully disconnected.'), 200)
         response.headers['Content-Type'] = 'application/json'
         # print'disconnect'
-        return response
+        # return response
+        flash('You are successfully signed out.')
+        return redirect(url_for('showCatalog'))
     else:
         response = make_response(json.dumps('Failed to revoke token for given user.', 400))
         response.headers['Content-Type'] = 'application/json'
@@ -268,7 +270,7 @@ def showItem(category_id):
             categoryOne = categoryOne, creator = creator)
     else:
         return render_template('item.html', items = items, categories = categories,
-            categoryOne = categoryOne)
+            categoryOne = categoryOne, creator = creator)
 
 @app.route('/catalog/category/<int:category_id>/item/new', methods=['GET','POST'])
 def newItem(category_id):

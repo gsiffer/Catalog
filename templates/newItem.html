@@ -3,21 +3,20 @@
 {% include "header.html" %}
 
 <div class="window-new">
-<h1 class="line text-center">New Item</h1>
-<p class="text-center">(Category: {{category.name}})</p>
-    <form action="{{url_for('newItem', category_id = category.id)}}" method = 'POST'>
-      <div class="header2 margin-desc">
-        <p>Name:</p>
-        <input type = 'text' size = '30' maxlength="25" name = 'name'>
-        <p>Description:</p>
-					<textarea  maxlength="500" rows="7" name="description" placeholder="Description of the item"></textarea>
-          <div class="header2">
-            <input class="btn btn-size" type="submit"  value="Create">
-            <input class="btn" type="button" value="Cancel" onClick="window.location='http://localhost:8000/catalog/category/{{category.id}}/item';">
-          </div>
+  <h1 class="line text-center">New Item</h1>
+  <p class="text-center">(Category: {{category.name}})</p>
+  <form action="{{url_for('newItem', category_id = category.id)}}" method = 'POST'>
+    <div class="header2 margin-desc">
+      <p>Name:</p>
+      <input type = 'text' size = '30' maxlength="25" name = 'name'>
+      <p>Description:</p>
+			<textarea  maxlength="500" rows="7" name="description" placeholder="Description of the item"></textarea>
+      <div class="header2">
+        <input class="btn btn-size" type="submit"  value="Create">
+        <input class="btn" type="button" value="Cancel" onClick="window.location='http://localhost:8000/catalog/category/{{category.id}}/item';">
       </div>
-    </form>
+    </div>
+  </form>
 </div>
-
 
 {% endblock %}

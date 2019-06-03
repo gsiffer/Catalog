@@ -3,14 +3,15 @@
 {% include "header.html" %}
 
 <div class="window-del">
-<h1 class="line text-center">Delete Item</h1>
-<p class="line text-center">Are you sure you want to delete this Item: <em>'{{deletedItem.name}}'</em>
+  <h1 class="line text-center">Delete Item</h1>
+  <p class="line text-center" style="padding:5px">Are you sure you want to delete this Item: <em>'{{deletedItem.name}}'</em>
    from this Category: <em>'{{category.name}}'</em></p>
-    <form action="{{url_for('deleteItem', category_id = category.id, item_id = deletedItem.id)}}" method = 'POST'>
-      <div class="header2 margin-btn">
-        <input class="btn" type="submit" value="Delete">
-        <input class="btn" type="button" value="Cancel" onClick="window.location='http://localhost:8000/catalog/category/{{category.id}}/item/{{deletedItem.id}}/description';">
-    </form>
+  <form action="{{url_for('deleteItem', category_id = category.id, item_id = deletedItem.id)}}" method = 'POST'>
+    <div class="header2 margin-btn">
+      <input class="btn" type="submit" value="Delete">
+      <input class="btn" type="button" value="Cancel" onClick="window.location='http://localhost:8000/catalog/category/{{category.id}}/item/{{deletedItem.id}}/description';">
+    </div>
+  </form>
 </div>
 
 {% endblock %}

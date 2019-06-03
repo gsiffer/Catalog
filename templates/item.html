@@ -1,48 +1,56 @@
 {% extends "main.html" %}
 {% block content %}
 {% include "header.html" %}
+
 <div class = "flash">
-		{% with messages = get_flashed_messages() %}
-      	{% if messages %}
-        <ul style="list-style: none;">
-        {% for message in messages %}
-            <li> <strong> {{ message }} </strong> </li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-    {% endwith %}
-
+	{% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul style="list-style: none;">
+      {% for message in messages %}
+        <li> <strong> {{ message }} </strong> </li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
 </div>
-  <div class="row center header2">
-    <div class="column left" style="background-color:#FAF5F3;">
-			<a href="{{url_for('newCategory')}}"><p>Add New Category</p></a>
-			<h2 class="line">Categories</h2>
-      <!-- <a href="{{url_for('newCategory')}}"><p>Add New Category</p></a> -->
-			<!-- <a href="{{url_for('newItem', category_id = categoryOne.id)}}"><p>Add New Item</p></a> -->
-      <!-- <h2>Categories</h2> -->
-      {% for category in categories %}
-        <a class="no-line" href = "{{url_for('showItem', category_id = category.id)}}">
-        <font>{{category.name}}</font></a>
-        {% if category.id == categoryOne.id %}
-          &nbsp;&nbsp;
-          <a href = "{{url_for('editCategory', category_id = categoryOne.id)}}">
-            <em>Edit</em></a>&nbsp;
-          <a href = "{{url_for('deleteCategory', category_id = categoryOne.id)}}">
-            <em>Delete</em></a>
-        {% endif %}
-        <br>
-      {% endfor %}
-      </div>
 
-    <div class="column right" style="background-color:#FCFAFA;">
-      <a href="{{url_for('newItem', category_id = categoryOne.id)}}"><p>Add New Item</p></a>
-      <h2 class="line">{{categoryOne.name}} Items ( {{items|length}} items )</h2>
-      {% for item in items %}
-      <a class="no-line"href = "{{url_for('description', category_id = item.category_id, item_id = item.id)}}">
-      <font>{{item.name}}</font></a>
+<div class="row center header2">
+  <div class="column left" style="background-color:#FAF5F3;">
+		<a href="{{url_for('newCategory')}}"><p>Add New Category</p></a>
+		<h2 class="line">Categories</h2>
+    {% for category in categories %}
+      <a class="no-line" href = "{{url_for('showItem', category_id = category.id)}}">
+      <font>{{category.name}}</font></a>
+      {% if category.id == categoryOne.id %}
+        &nbsp;&nbsp;
+        <a href = "{{url_for('editCategory', category_id = categoryOne.id)}}">
+        	<em>Edit</em></a>&nbsp;
+        <a href = "{{url_for('deleteCategory', category_id = categoryOne.id)}}">
+        	<em>Delete</em></a>
+      {% endif %}
       <br>
-      {% endfor %}
-    </div>
+    {% endfor %}
   </div>
+
+	<div class="row column right" style="background-color:#FCFAFA;">
+		<div class="float-left">
+			<a href="{{url_for('newItem', category_id = categoryOne.id)}}"><p>Add New Item</p></a>
+	    <h2 class="line">{{categoryOne.name}} Items ( {{items|length}} items )</h2>
+	    {% for item in items %}
+	    	<a class="no-line"href = "{{url_for('description', category_id = item.category_id, item_id = item.id)}}">
+	      <font>{{item.name}}</font></a>
+	      <br>
+	    {% endfor %}
+	  </div>
+
+	  <div class= "log-right">
+	  	<figure>
+				<img src="{{ creator.picture}}" width="100">
+				<br><div style ="text-align:center; font-size:0.8em"><em>Created by:</em></div>
+				<figcaption style ="text-align:center">{{ creator.name }}</figcaption>
+			</figure>
+	  </div>
+	</div>
+</div>
 
 {% endblock %}

@@ -3,21 +3,20 @@
 {% include "header.html" %}
 
 <div class="window-new">
-<h1 class="line text-center">Edit Item</h1>
-<p class="text-center">(Category: {{category.name}})</p>
-    <form action="{{url_for('editItem', category_id = category.id, item_id = editedItem.id)}}" method = 'POST'>
-      <div class="header2 margin-desc">
-        <p>Name:</p>
-        <input type = 'text' size = '30' maxlength="25" name = 'name' value="{{editedItem.name}}">
-        <p>Description:</p>
-					<textarea  maxlength="500" rows="7" name="description">{{editedItem.description}}</textarea>
-          <div class="header2">
-            <input class="btn btn-size" type="submit"  value="Edit">
-            <input class="btn" type="button" value="Cancel" onClick="window.location='http://localhost:8000/catalog/category/{{category.id}}/item/{{editedItem.id}}/description';">
-          </div>
+  <h1 class="line text-center">Edit Item</h1>
+  <p class="text-center">(Category: {{category.name}})</p>
+  <form action="{{url_for('editItem', category_id = category.id, item_id = editedItem.id)}}" method = 'POST'>
+    <div class="header2 margin-desc">
+      <p>Name:</p>
+      <input type = 'text' size = '30' maxlength="25" name = 'name' value="{{editedItem.name}}">
+      <p>Description:</p>
+			<textarea  maxlength="500" rows="7" name="description">{{editedItem.description}}</textarea>
+      <div class="header2">
+        <input class="btn btn-size" type="submit"  value="Edit">
+        <input class="btn" type="button" value="Cancel" onClick="window.location='http://localhost:8000/catalog/category/{{category.id}}/item/{{editedItem.id}}/description';">
       </div>
-    </form>
+    </div>
+  </form>
 </div>
-
 
 {% endblock %}

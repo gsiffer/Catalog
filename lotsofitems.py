@@ -20,8 +20,9 @@ session = DBSession()
 
 
 # Create dummy user
-User1 = User(name="Gabor Siffer", email="gabor.siffer@gmail.com",
-             picture='')
+User1 = User(name='Gabor Siffer', email='gabor.siffer@gmail.com',
+    picture='https://lh5.googleusercontent.com/-7EYtYw-x--M/AAAAAAAAAAI/'
+        'AAAAAAAAAAA/ACHi3reup4ImcSwWS0M0iuBUAhxTAMjxpQ/mo/photo.jpg')
 session.add(User1)
 session.commit()
 
