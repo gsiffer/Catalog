@@ -8,7 +8,7 @@
     <!--google -->
     <script src="//apis.google.com/js/platform.js?onload=init" async defer></script>`
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="########">
+    <meta name="google-signin-client_id" content="670908828361-3hjprr1u96aaph89q6c85ie3osk4lsl9.apps.googleusercontent.com">
 
 </head>
 
@@ -22,8 +22,7 @@
         <h1>Sign with your Google Account</h1>
           <div class="g-signin2 btn-google" id="signinButton" data-onsuccess="onSignIn"
             data-width= "150px"></div>
-        <!-- <button class="g-signin2" id="signinButton" data-width="150" data-height="20"
-        data-longtitle="true" >Sign in</button> -->
+
         </div>
 
         <script>
@@ -32,7 +31,7 @@
                 gapi.load('auth2', function () {
                     console.log("loaded auth2")
                     auth2 = gapi.auth2.init({
-                        client_id: '######',
+                        client_id: '670908828361-3hjprr1u96aaph89q6c85ie3osk4lsl9.apps.googleusercontent.com',
                         scope: 'profile email'
                     });
 
