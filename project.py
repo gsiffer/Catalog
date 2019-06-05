@@ -244,6 +244,10 @@ def newCategory():
 def editCategory(category_id):
     if 'username' not in login_session:
         return redirect('/login')
+    categoryOne = session.query(Category).filter_by(id=category_id).one()
+    creator = getUserInfo(categoryOne.user_id)
+    if creator.id != login_session['user_id']:
+        return redirect(url_for('showItem', category_id=category_id))
     editedCategory = session.query(Category).filter_by(id=category_id).one()
     if request.method == 'POST':
         if request.form['name']:
@@ -269,6 +273,10 @@ def editCategory(category_id):
 def deleteCategory(category_id):
     if 'username' not in login_session:
         return redirect('/login')
+    categoryOne = session.query(Category).filter_by(id=category_id).one()
+    creator = getUserInfo(categoryOne.user_id)
+    if creator.id != login_session['user_id']:
+        return redirect(url_for('showItem', category_id=category_id))
     categoryToDelete = session.query(Category).filter_by(id=category_id).one()
     if request.method == 'POST':
         itemsToDelete = session.query(Item).filter_by(
@@ -337,6 +345,11 @@ def newItem(category_id):
 def editItem(category_id, item_id):
     if 'username' not in login_session:
         return redirect('/login')
+    categoryOne = session.query(Category).filter_by(id=category_id).one()
+    creator = getUserInfo(categoryOne.user_id)
+    if creator.id != login_session['user_id']:
+        return redirect(url_for('description', category_id=category_id,
+                                item_id=item_id))
     editedItem = session.query(Item).filter_by(id=item_id).one()
     category = session.query(Category).filter_by(id=category_id).one()
     if request.method == 'POST':
@@ -360,6 +373,11 @@ def editItem(category_id, item_id):
 def deleteItem(category_id, item_id):
     if 'username' not in login_session:
         return redirect('/login')
+    categoryOne = session.query(Category).filter_by(id=category_id).one()
+    creator = getUserInfo(categoryOne.user_id)
+    if creator.id != login_session['user_id']:
+        return redirect(url_for('description', category_id=category_id,
+                                item_id=item_id))
     deletedItem = session.query(Item).filter_by(id=item_id).one()
     category = session.query(Category).filter_by(id=category_id).one()
     if request.method == 'POST':
